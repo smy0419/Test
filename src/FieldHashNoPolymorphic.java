@@ -6,7 +6,7 @@ public class FieldHashNoPolymorphic {
     static class Father {
         public int money = 1;
         public Father() {
-            money = 2;
+            money = 3;
             showMeTheMoney();
         }
         public void showMeTheMoney() {

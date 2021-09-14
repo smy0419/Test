@@ -7,20 +7,20 @@ import java.util.HashMap;
  * 当缓存达到其容量时，它应该在插入新项目之前使最近最少使用的项目作废。
  */
 public class LRUCache<K, V> {
-    private int cacheCapcity;
+    private int cacheCapacity;
     private HashMap<K, CacheNode> caches;
     private CacheNode first;
     private CacheNode last;
 
     public LRUCache(int size) {
-        this.cacheCapcity = size;
+        this.cacheCapacity = size;
         caches = new HashMap<>(size);
     }
 
     public void put(K k, V v) {
         CacheNode node = caches.get(k);
         if (node == null) {
-            if (caches.size() >= cacheCapcity) {
+            if (caches.size() >= cacheCapacity) {
                 caches.remove(last.key);
                 removeLast();
             }

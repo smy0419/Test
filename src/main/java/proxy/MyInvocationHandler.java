@@ -26,6 +26,8 @@ public class MyInvocationHandler implements InvocationHandler {
     }
 
     public Object getProxy() {
+        // 测试两种写法获取的class loader是否相同
+        System.out.println(Thread.currentThread().getContextClassLoader() == target.getClass().getClassLoader());
         return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), target.getClass().getInterfaces(), this);
     }
 

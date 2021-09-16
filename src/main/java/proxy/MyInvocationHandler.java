@@ -36,6 +36,11 @@ public class MyInvocationHandler implements InvocationHandler {
         MyInvocationHandler handler = new MyInvocationHandler(p);
         Person proxy = (Person) handler.getProxy();
         proxy.sayHi("lucy");
+
+        Human h = new Women();
+        MyInvocationHandler handler2 = new MyInvocationHandler(h);
+        Human proxy2 = (Human) handler2.getProxy();
+        proxy2.eat("apple");
     }
 
 }

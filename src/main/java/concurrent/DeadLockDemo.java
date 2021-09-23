@@ -28,11 +28,11 @@ public class DeadLockDemo {
         @Override
         public void run() {
             synchronized (o1) {
-                System.out.println("i get o1");
+                System.out.println("i get o1, and i need o2");
                 try {
                     Thread.sleep(100);
                     synchronized (o2) {
-                        System.out.println("do something...");
+                        System.out.println("i get o2, do something...");
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -53,11 +53,11 @@ public class DeadLockDemo {
         @Override
         public void run() {
             synchronized (o2) {
-                System.out.println("i get o2");
+                System.out.println("i get o2, and i need o1");
                 try {
                     Thread.sleep(100);
                     synchronized (o1) {
-                        System.out.println("do something...");
+                        System.out.println("i get o1, do something...");
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

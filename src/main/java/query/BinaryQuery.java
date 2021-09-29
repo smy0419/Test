@@ -1,7 +1,5 @@
 package query;
 
-import java.util.Arrays;
-
 /**
  * @author sunmengyuan
  * @date 2021-09-03
@@ -13,7 +11,6 @@ public class BinaryQuery {
         if (nums == null || nums.length == 0) {
             return -1;
         }
-        Arrays.sort(nums);
         int left = 0, right = nums.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -29,7 +26,7 @@ public class BinaryQuery {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 99, 22, 11, 23, 5, 78, 9898, 11, 323, 434, 454, 68, 432, 789, 33, 65};
-        System.out.println(query(nums, 9898));
+        int[] nums = {1, 5, 11, 22, 23, 33, 65, 68, 78, 99, 323, 432, 434, 454, 789, 9898};
+        System.out.println(query(nums, 22));
     }
 }

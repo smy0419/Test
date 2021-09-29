@@ -1,9 +1,9 @@
 /**
  * @author sunmengyuan
  * @date 2021-09-29
- * 使用wait-notify机制交替打印奇偶
+ * 只使用synchronized交替打印奇偶
  */
-public class PrintOddAndEvenWithWaitNotify {
+public class PrintOddAndEvenOnlyWithSync {
     private static Integer i = new Integer(0);
     private static Object lock = new Object();
 
@@ -17,17 +17,10 @@ public class PrintOddAndEvenWithWaitNotify {
     static class OddPrinter implements Runnable {
         @Override
         public void run() {
-            while (i <= 100) {
+            while (i < 100) {
                 synchronized (lock) {
                     if (i % 2 == 1) {
                         System.out.println("OddPrinter Thread print " + i++);
-                        lock.notify();
-                    } else {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
             }
@@ -37,17 +30,10 @@ public class PrintOddAndEvenWithWaitNotify {
     static class EvenPrinter implements Runnable {
         @Override
         public void run() {
-            while (i <= 100) {
+            while (i < 100) {
                 synchronized (lock) {
                     if (i % 2 == 0) {
                         System.out.println("EvenPrinter Thread print " + i++);
-                        lock.notify();
-                    } else {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
             }

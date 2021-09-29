@@ -24,8 +24,7 @@ public class PrintOddAndEvenWithLock {
                 if (i % 2 != 0) {
                     lock.lock();
                     try {
-                        System.out.println("OddPrinter Thread print " + i);
-                        i++;
+                        System.out.println("OddPrinter Thread print " + i++);
                     } finally {
                         lock.unlock();
                     }
@@ -41,8 +40,7 @@ public class PrintOddAndEvenWithLock {
                 if (i % 2 == 0) {
                     lock.lock();
                     try {
-                        System.out.println("EvenPrinter Thread print " + i);
-                        i++;
+                        System.out.println("EvenPrinter Thread print " + i++);
                     } finally {
                         lock.unlock();
                     }

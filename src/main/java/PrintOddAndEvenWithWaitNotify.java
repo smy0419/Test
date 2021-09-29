@@ -1,6 +1,7 @@
 /**
  * @author sunmengyuan
  * @date 2021-09-29
+ * 使用wait-notify机制交替打印奇偶
  */
 public class PrintOddAndEvenWithWaitNotify {
     private static Integer i = new Integer(0);

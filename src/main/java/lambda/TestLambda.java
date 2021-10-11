@@ -58,5 +58,9 @@ public class TestLambda {
                 .limit(20)
                 .forEach(t -> System.out.println(t[0] + "/" + t[1]));
 
+        // 打印随机数
+        Stream.generate(Math::random)
+                .limit(20)
+                .forEach(System.out::println);
     }
 }

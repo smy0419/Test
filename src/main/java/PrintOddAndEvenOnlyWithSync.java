@@ -4,8 +4,8 @@
  * 只使用synchronized交替打印奇偶
  */
 public class PrintOddAndEvenOnlyWithSync {
-    private static Integer i = new Integer(0);
-    private static Object lock = new Object();
+    private static int i = 0;
+    private static final Object lock = new Object();
 
     public static void main(String[] args) {
         Thread t1 = new Thread(new OddPrinter());
@@ -22,6 +22,7 @@ public class PrintOddAndEvenOnlyWithSync {
                     if (i % 2 == 1) {
                         System.out.println("OddPrinter Thread print " + i++);
                     }
+                    System.out.println("OddPrinter 抢到了锁，但没执行");
                 }
             }
         }
@@ -35,6 +36,7 @@ public class PrintOddAndEvenOnlyWithSync {
                     if (i % 2 == 0) {
                         System.out.println("EvenPrinter Thread print " + i++);
                     }
+                    System.out.println("EvenPrinter 抢到了锁，但没执行");
                 }
             }
         }

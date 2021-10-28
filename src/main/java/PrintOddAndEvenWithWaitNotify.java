@@ -4,8 +4,8 @@
  * 使用wait-notify机制交替打印奇偶
  */
 public class PrintOddAndEvenWithWaitNotify {
-    private static Integer i = new Integer(0);
-    private static Object lock = new Object();
+    private static int i;
+    private static final Object lock = new Object();
 
     public static void main(String[] args) {
         Thread t1 = new Thread(new OddPrinter());
@@ -17,18 +17,17 @@ public class PrintOddAndEvenWithWaitNotify {
     static class OddPrinter implements Runnable {
         @Override
         public void run() {
-            while (i <= 100) {
+            while (i < 100) {
                 synchronized (lock) {
-                    if (i % 2 == 1) {
-                        System.out.println("OddPrinter Thread print " + i++);
-                        lock.notify();
-                    } else {
+                    while (i % 2 == 0) {
                         try {
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
+                    System.out.println("OddPrinter Thread print " + i++);
+                    lock.notify();
                 }
             }
         }
@@ -37,18 +36,17 @@ public class PrintOddAndEvenWithWaitNotify {
     static class EvenPrinter implements Runnable {
         @Override
         public void run() {
-            while (i <= 100) {
+            while (i < 100) {
                 synchronized (lock) {
-                    if (i % 2 == 0) {
-                        System.out.println("EvenPrinter Thread print " + i++);
-                        lock.notify();
-                    } else {
+                    while (i % 2 == 1) {
                         try {
                             lock.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
+                    System.out.println("EvenPrinter Thread print " + i++);
+                    lock.notify();
                 }
             }
         }

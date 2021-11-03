@@ -9,18 +9,19 @@ public class StringNumberAdd {
         int lengthS2 = s2.length();
         int zeroNum = lengthS1 - lengthS2;
         // 先将两个字符串对齐，便于统一处理
+        StringBuilder s2Builder = new StringBuilder(s2);
         while (zeroNum > 0) {
-            s2 = "0" + s2;
+            s2Builder.insert(0, "0");
             zeroNum--;
         }
-        System.out.println(s1 + "=====" + s2);
+        System.out.println(s1 + "=====" + s2Builder);
 
         StringBuilder resultBuilder = new StringBuilder();
         // 标记上一次循环的结果，是否需要进位
         boolean needAdd = false;
-        for (int i = s2.length() - 1; i >= 0; i--) {
+        for (int i = s1.length() - 1; i >= 0; i--) {
             String number1 = String.valueOf(s1.charAt(i));
-            String number2 = String.valueOf(s2.charAt(i));
+            String number2 = String.valueOf(s2Builder.charAt(i));
             int result = Integer.parseInt(number1) + Integer.parseInt(number2);
             if (needAdd) {
                 result += 1;

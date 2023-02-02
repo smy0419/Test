@@ -7,8 +7,10 @@ public class 合并两个有序数组 {
         int[] a = new int[5];
         a[0] = 1;
         a[1] = 3;
-        int[] b = {2, 4, 6};
-        merge(a, 2, b, 3);
+        a[2] = 11;
+        a[3] = 31;
+        int[] b = {-1, 4, 6};
+        merge(a, 4, b, 1);
         Arrays.stream(a).forEach(v -> System.out.println(v));
     }
 

@@ -1,4 +1,5 @@
 import java.util.Queue;
+import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -26,6 +27,7 @@ public class ConsumerAndProducer {
                         System.out.println("队列空了，我得等一会了。。。");
                         notEmpty.await();
                     }
+                    Thread.sleep(new Random().nextInt(1000));
                     String s = queue.poll();
                     System.out.println("消费一个对象" + s);
                     notFull.signal();
@@ -48,6 +50,7 @@ public class ConsumerAndProducer {
                         System.out.println("队列满了，我得等一会了。。。");
                         notFull.await();
                     }
+                    Thread.sleep(new Random().nextInt(1000));
                     queue.add("AAA");
                     System.out.println("生产一个对象");
                     notEmpty.signal();

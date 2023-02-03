@@ -10,6 +10,13 @@ public class 快速排序2 {
         System.out.println("快速排序后:" + Arrays.toString(nums));
     }
 
+    /**
+     * 和排序1一样，封装了swap方法
+     *
+     * @param nums
+     * @param L
+     * @param R
+     */
     public static void quickSort(int[] nums, int L, int R) {
         if (L >= R) {
             return;
@@ -18,7 +25,7 @@ public class 快速排序2 {
         int left = L;
         int right = R;
         while (left < right) {
-            while (left < right && nums[right] >= pivot) {
+            while (left < right && nums[right] > pivot) {
                 right--;
             }
             while (left < right && nums[left] <= pivot) {

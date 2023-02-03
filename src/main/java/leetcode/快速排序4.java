@@ -3,6 +3,23 @@ package leetcode;
 import java.util.Arrays;
 
 public class 快速排序4 {
+    public static void main(String[] args) {
+//        int[] nums = {11, 24, 5, 32, 50, 34, 54, 76, 5, 1};
+        int[] nums = {4, 7, 6, 5, 3, 2, 8, 1};
+//        int[] nums = {5, 4, 3, 2, 1};
+//        int[] nums = {1, 2, 3, 4, 5};
+        System.out.println("快速排序前:" + Arrays.toString(nums));
+        quickSort(nums, 0, nums.length - 1);
+        System.out.println("快速排序后:" + Arrays.toString(nums));
+    }
+
+    /**
+     * 快慢指针的另一种写法，取最右边为基准元素
+     *
+     * @param a
+     * @param low
+     * @param high
+     */
     public static void quickSort(int[] a, int low, int high) {
         //如果一直拆分到只有一位就返回
         if (low >= high) {
@@ -33,9 +50,4 @@ public class 快速排序4 {
         quickSort(a, i + 2, high);
     }
 
-    public static void main(String[] args) {
-        int[] a = new int[]{3, 2, 5, 6, 7, 9, 5};
-        quickSort(a, 0, a.length - 1);
-        System.out.println(Arrays.toString(a));
-    }
 }

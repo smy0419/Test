@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class 快速排序5 {
     public static void main(String[] args) {
 //        int[] nums = {11, 24, 5, 32, 50, 34, 54, 76, 5, 1};
-//        int[] nums = {4, 7, 6, 5, 3, 2, 8, 1};
-        int[] nums = {5, 4, 3, 2, 1};
+        int[] nums = {4, 7, 6, 5, 3, 2, 8, 1, 8};
+//        int[] nums = {5, 4, 3, 2, 1};
 //        int[] nums = {1, 2, 3, 4, 5};
         System.out.println("快速排序前:" + Arrays.toString(nums));
         quickSort(nums, 0, nums.length - 1);
@@ -21,6 +21,14 @@ public class 快速排序5 {
         }
     }
 
+    /**
+     * 也是双边循环法，写法和排序1有差异
+     *
+     * @param a
+     * @param low
+     * @param high
+     * @return
+     */
     private static int partition(int[] a, int low, int high) {
         int pivot = a[low];
         while (low < high) {

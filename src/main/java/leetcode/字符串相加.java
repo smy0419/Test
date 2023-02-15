@@ -2,8 +2,8 @@ package leetcode;
 
 public class 字符串相加 {
     public static void main(String[] args) {
-        String num1 = "12345";
-        String num2 = "4554654";
+        String num1 = "99";
+        String num2 = "1";
         System.out.println(addString(num1, num2));
         System.out.println(Integer.parseInt(num1) + Integer.parseInt(num2));
     }
@@ -15,7 +15,7 @@ public class 字符串相加 {
             int x = i < 0 ? 0 : num1.charAt(i) - '0';
             int y = j < 0 ? 0 : num2.charAt(j) - '0';
             sb.append((x + y + carry) % 10);
-            carry = (x + y) > 10 ? 1 : 0;
+            carry = (x + y + carry) >= 10 ? 1 : 0;
         }
         return sb.reverse().toString();
     }
